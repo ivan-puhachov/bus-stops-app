@@ -1,10 +1,8 @@
 const express = require('express');
-const cors = require('cors');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 const axios = require('axios');
 const cors = require('cors');
-app.use(cors());
 
 axios.get('https://ifconfig.me')
     .then(response => console.log('Railway Public IP:', response.data))
