@@ -134,7 +134,7 @@ async function loadRegions() {
 
     try {
         showLoading();
-        const response = await fetch('http://localhost:3000/regions');
+        const response = await fetch('https://bus-stops-app.onrender.com/regions');
         regions = await response.json();
 
         console.log('Regions loaded:', regions);
@@ -292,7 +292,7 @@ async function loadStops(region) {
 
     try {
         showLoading();
-        const response = await fetch(`http://localhost:3000/stops?region=${region}`);
+        const response = await fetch(`https://bus-stops-app.onrender.com/stops?region=${region}`);
         stops = await response.json();
         console.log(`Stops for region ${region} loaded:`, stops);
 
@@ -353,7 +353,7 @@ async function loadBuses(stop) {
 
     try {
         showLoading();
-        const response = await fetch(`http://localhost:3000/buses?stop=${encodeURIComponent(stop)}&region=${encodeURIComponent(region)}`);
+        const response = await fetch(`https://bus-stops-app.onrender.com/buses?stop=${encodeURIComponent(stop)}&region=${encodeURIComponent(region)}`);
         const buses = await response.json();
         console.log(`Buses for region ${region} and stop ${stop} loaded:`, buses);
         displayBuses(buses);
@@ -374,7 +374,7 @@ async function fetchBusDetails(bus, stop) {
 
 
     try {
-        const response = await fetch(`http://localhost:3000/bus-details?bus=${bus}&stop=${stop}`);
+        const response = await fetch(`https://bus-stops-app.onrender.com/bus-details?bus=${bus}&stop=${stop}`);
         const details = await response.json();
 
         if (details.length === 0) {
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const { latitude, longitude } = position.coords;
 
             try {
-                const response = await fetch(`http://localhost:3000/nearest?lat=${latitude}&lon=${longitude}`);
+                const response = await fetch(`https://bus-stops-app.onrender.com/nearest?lat=${latitude}&lon=${longitude}`);
                 const data = await response.json();
 
                 // Устанавливаем регион и остановку
