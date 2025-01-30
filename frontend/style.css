@@ -1,0 +1,197 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header */
+header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #3174ad;
+    margin-bottom: 30px;
+}
+
+/* Input row container for horizontal alignment */
+.input-row {
+    display: flex;
+    gap: 20px; /* Spacing between elements */
+    justify-content: space-between; /* Even distribution */
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+.input-group {
+    position: relative; /* Для позиционирования выпадающего списка */
+    flex: 1; /* Поля занимают равное пространство */
+    max-width: 45%; /* Максимальная ширина полей */
+    display: flex;
+    flex-direction: column; /* Размещаем название над полем */
+    box-sizing: border-box; /* Учитываем padding и border для контейнера */
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left; /* Align text to the left */
+}
+
+.input-group input {
+    width: 100%; /* Поля занимают всю ширину контейнера */
+    min-width: 400px; /* Увеличиваем минимальную ширину */
+    padding: 10px;
+    font-size: 16px; /* Увеличиваем размер текста */
+    border: 1px solid #ccc; /* Если нужно, можете оставить границу */
+    border-radius: 1px;
+    box-shadow: none; /* Убирает внутреннюю тень */
+    outline: none; /* Убирает подсветку при фокусе */
+    box-sizing: border-box; /* Учитываем padding и border */
+}
+
+.input-group input:focus {
+    outline: none; /* Убирает стандартное выделение */
+    box-shadow: none; /* Убирает внутреннюю тень */
+}
+
+
+/* Clear button */
+#clearButton {
+    display: block;
+    width: 100%;
+    max-width: 300px; /* Limit button width */
+    margin: 0 auto; /* Center the button */
+    padding: 10px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+#clearButton:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Suggestions dropdown styles */
+.suggestions {
+    max-height: 150px;
+    overflow-y: auto;
+    background: #ffffff; /* Белый фон */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0; /* Убедитесь, что padding обнулен */
+    text-align: left;
+    width: 100%; /* Ширина совпадает с родительским элементом */
+    display: none; /* Скрыто по умолчанию */
+    position: absolute; /* Для привязки к полю ввода */
+    z-index: 1000; /* Чтобы перекрывать соседние элементы */
+    top: calc(100% + 2px); /* Расположить прямо под полем ввода */
+    left: 0; /* Выравнивание по левому краю */
+    box-sizing: border-box; /* Учитываем padding и border */
+}
+
+
+.suggestions li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee; /* Для всех кроме последнего элемента */
+}
+
+.suggestions li:last-child {
+    border-bottom: none; /* Убирает нижнюю границу для последнего элемента */
+}
+
+.suggestions li:hover {
+    background: #e6f0f8;
+}
+
+/* Results and details */
+#results, #busDetails {
+    margin-top: 20px;
+    text-align: left;
+}
+
+h3 {
+    color: #3174ad;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: #f9f9f9;
+}
+
+.error-message {
+    color: #ff0000; /* Красный цвет для ошибок */
+    font-size: 14px; /* Уменьшенный размер текста */
+    margin-top: 5px; /* Отступ сверху */
+    display: none; /* Скрывать по умолчанию */
+}
+
+#loadingSpinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#results ul {
+    display: flex; /* Располагаем элементы в строку */
+    flex-wrap: wrap; /* Переносим элементы на следующую строку, если не хватает места */
+    padding: 0;
+    margin: 0;
+    list-style-type: none; /* Убираем маркеры списка */
+    justify-content: center; /* Центрируем элементы */
+    gap: 10px; /* Пробелы между элементами */
+}
+
+#results ul li {
+    padding: 0;
+    margin: 0;
+}
+
+#results ul li button {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#results ul li button:hover {
+    background-color: #0056b3; /* Темно-синий при наведении */
+}
