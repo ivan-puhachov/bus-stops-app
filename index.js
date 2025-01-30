@@ -147,7 +147,7 @@ app.get('/nearest', (req, res) => {
                     cos(radians(stop_lon) - radians(?)) +
                     sin(radians(?)) * sin(radians(stop_lat))
                )) AS distance
-        FROM yuganpolezhaev_stops
+        FROM stops
         ORDER BY distance ASC
         LIMIT 1
     `;
