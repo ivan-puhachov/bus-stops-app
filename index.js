@@ -2,6 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+const axios = require('axios');
+
+axios.get('https://ifconfig.me')
+    .then(response => console.log('Railway Public IP:', response.data))
+    .catch(error => console.error('Error getting Railway IP:', error.message));
+
 
 // Load environment variables
 dotenv.config();
