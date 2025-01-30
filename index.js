@@ -1,12 +1,18 @@
 const express = require('express');
+require('dotenv').config();
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 const axios = require('axios');
 const cors = require('cors');
 
+// Проверяем, загрузились ли переменные
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_USER:", process.env.DB_USER);
+console.log("DB_NAME:", process.env.DB_NAME);
+
 axios.get('https://ifconfig.me')
-    .then(response => console.log('Railway Public IP:', response.data))
-    .catch(error => console.error('Error getting Railway IP:', error.message));
+    .then(response => console.log('IP:', response.data))
+    .catch(error => console.error('Error getting  IP:', error.message));
 
 
 // Load environment variables
@@ -21,11 +27,11 @@ app.use(cors());
 
 // Database configuration
 const db = mysql.createConnection({
-    host: "34.88.151.159", 
-    port: 3306, 
+    host: process.env.DB_HOST, 
+    port: process.env.DB_PORT || 3306, 
     user: process.env.DB_USER, 
     password: process.env.DB_PASSWORD, 
-    database: process.env.DB_NAME,
+    database: process.env.DB_NAME
 });
 
 console.log("Connecting to MySQL...");
@@ -41,6 +47,8 @@ db.connect((err) => {
         console.log('Successfully connected to the database.');
     }
 });
+
+module.exports = db;
 
 // Root route
 app.get('/', (req, res) => {
